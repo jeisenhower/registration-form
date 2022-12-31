@@ -166,9 +166,9 @@
                 
                 // Ensure that first name does not equal last name
                 if (fname.toLowerCase() == lname.toLowerCase()) {
-                    for (let element of document.getElementsByClassName("error")) {
-                        element.style.visibility = "visible";
-                        element.innerHTML = "First and last name must be unique";
+                    for (let i=0; i<2; i++) {
+                        document.getElementsByClassName("error")[i].style.visibility = "visible";
+                        document.getElementsByClassName("error")[i].innerHTML = "First and last name must be unique";
                     }
                     return false;
                 }
@@ -188,7 +188,12 @@
                     return false;
                 }
 
-                console.log("Returning true");
+                // Hide the paragraph elements
+                for (element of document.getElementsByClassName("error")) {
+                    element.style.visibility = "hidden";
+                    element.innerHTML = null;
+                }
+
                 //document.getElementById("form").submit();
                 document.getElementById("form").reset();
                 return true;
